@@ -3,7 +3,6 @@ package com.uevitondev.testmanagement.entities;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
-import java.time.Instant;
 import java.util.Objects;
 
 @Entity
@@ -13,7 +12,7 @@ public class StatusTest implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String status;
-    private Instant instant;
+    private String date;
     private Long time;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "testcase_id")
@@ -22,10 +21,10 @@ public class StatusTest implements Serializable {
     public StatusTest() {
     }
 
-    public StatusTest(Long id, String status, Instant instant, Long time) {
+    public StatusTest(Long id, String status, String date, Long time) {
         this.id = id;
         this.status = status;
-        this.instant = instant;
+        this.date = date;
         this.time = time;
     }
 
@@ -45,12 +44,12 @@ public class StatusTest implements Serializable {
         this.status = status;
     }
 
-    public Instant getInstant() {
-        return instant;
+    public String getDate() {
+        return date;
     }
 
-    public void setInstant(Instant instant) {
-        this.instant = instant;
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public Long getTime() {

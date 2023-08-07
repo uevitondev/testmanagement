@@ -1,12 +1,8 @@
 package com.uevitondev.testmanagement.controllers;
 
 import com.uevitondev.testmanagement.dtos.NewStatusTestDTO;
-import com.uevitondev.testmanagement.dtos.NewTestCaseDTO;
 import com.uevitondev.testmanagement.dtos.StatusTestDTO;
-import com.uevitondev.testmanagement.dtos.TestCaseDTO;
-import com.uevitondev.testmanagement.entities.StatusTest;
 import com.uevitondev.testmanagement.services.StatusTestService;
-import com.uevitondev.testmanagement.services.TestCaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -30,5 +26,10 @@ public class StatusTestController {
     public ResponseEntity<StatusTestDTO> insertStatusTest(@RequestBody NewStatusTestDTO dto) {
         URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath().path("/status").toUriString());
         return ResponseEntity.created(uri).body(statusTestService.insertStatusTest(dto));
+    }
+
+    @GetMapping("/case")
+    public ResponseEntity<List<StatusTestDTO>> getAllStatusTestByTestCaseId(@RequestParam(name = "caseid") Long id) {
+        return ResponseEntity.ok().body(statusTestService.getAllStatusTestByTestCaseId(id));
     }
 }

@@ -2,10 +2,7 @@ package com.uevitondev.testmanagement.controllers;
 
 import com.uevitondev.testmanagement.dtos.NewTestCaseDTO;
 import com.uevitondev.testmanagement.dtos.TestCaseDTO;
-import com.uevitondev.testmanagement.entities.TestCase;
 import com.uevitondev.testmanagement.services.TestCaseService;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

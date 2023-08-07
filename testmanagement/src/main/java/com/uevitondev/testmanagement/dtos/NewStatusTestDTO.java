@@ -1,13 +1,10 @@
 package com.uevitondev.testmanagement.dtos;
 
-import com.uevitondev.testmanagement.entities.StatusTest;
-
 import java.io.Serializable;
-import java.time.Instant;
 
 public class NewStatusTestDTO implements Serializable {
     private String status;
-    private Instant instant;
+    private String date;
     private Long time;
     private Long testCaseId;
 
@@ -15,9 +12,9 @@ public class NewStatusTestDTO implements Serializable {
 
     }
 
-    public NewStatusTestDTO(String status, Instant instant, Long time, Long testCaseId) {
+    public NewStatusTestDTO(String status, String date, Long time, Long testCaseId) {
         this.status = status;
-        this.instant = instant;
+        this.date = date;
         this.time = time;
         this.testCaseId = testCaseId;
     }
@@ -30,12 +27,12 @@ public class NewStatusTestDTO implements Serializable {
         this.status = status;
     }
 
-    public Instant getInstant() {
-        return instant;
+    public String getDate() {
+        return date;
     }
 
-    public void setInstant(Instant instant) {
-        this.instant = instant;
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public Long getTime() {

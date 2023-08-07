@@ -10,7 +10,6 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.Instant;
 import java.util.List;
 
 @Service
@@ -32,12 +31,17 @@ public class StatusTestService {
                 .orElseThrow(() -> new RuntimeException("entity not found for id: " + dto.getTestCaseId()));
         StatusTest statusTest = new StatusTest();
         statusTest.setStatus(dto.getStatus());
-        statusTest.setInstant(Instant.now());
+        statusTest.setDate(dto.getDate());
         statusTest.setTime(dto.getTime());
         statusTest.setTestCase(testCase);
 
         statusTest = statusTestRepository.save(statusTest);
 
         return new StatusTestDTO(statusTest);
+    }
+
+    @Transactional
+    public List<StatusTestDTO> getAllStatusTestByTestCaseId(Long id) {
+        return statusTestRepository.findByTestCaseId(id).stream().map(StatusTestDTO::new).toList();
     }
 }
