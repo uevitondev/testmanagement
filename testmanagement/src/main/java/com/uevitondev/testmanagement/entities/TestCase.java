@@ -3,6 +3,8 @@ package com.uevitondev.testmanagement.entities;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -15,6 +17,9 @@ public class TestCase implements Serializable {
     private String stepsData;
     private String stepsResult;
     private String type;
+    @OneToMany
+    @JoinColumn(name = "testcase_id")
+    List<StatusTest> statusTests = new ArrayList<>();
 
     public TestCase() {
 
@@ -66,6 +71,14 @@ public class TestCase implements Serializable {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public List<StatusTest> getStatusTests() {
+        return statusTests;
+    }
+
+    public void setStatusTests(List<StatusTest> statusTests) {
+        this.statusTests = statusTests;
     }
 
     @Override

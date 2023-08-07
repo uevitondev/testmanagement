@@ -15,6 +15,9 @@ public class StatusTest implements Serializable {
     private String status;
     private Instant instant;
     private Long time;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "testcase_id")
+    private TestCase testCase;
 
     public StatusTest() {
     }
@@ -56,6 +59,14 @@ public class StatusTest implements Serializable {
 
     public void setTime(Long time) {
         this.time = time;
+    }
+
+    public TestCase getTestCase() {
+        return testCase;
+    }
+
+    public void setTestCase(TestCase testCase) {
+        this.testCase = testCase;
     }
 
     @Override
